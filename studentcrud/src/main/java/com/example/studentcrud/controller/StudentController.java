@@ -22,7 +22,7 @@ public class StudentController {
         return service.saveStudent(student);
     }
 
-    // GET
+    // GET ALL
     @GetMapping
     public List<Student> getStudents() {
         return service.getAllStudents();

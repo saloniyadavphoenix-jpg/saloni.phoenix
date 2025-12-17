@@ -20,17 +20,30 @@ public class StudentService {
         return repository.save(student);
     }
 
-    // GET
+    // GET ALL
     public List<Student> getAllStudents() {
         return repository.findAll();
     }
 
+    // GET BY ID
+    public Student getStudentById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    // GET BY EMAIL (Custom Query)
+    public Student getStudentByEmail(String email) {
+        return repository.findByEmail(email).orElse(null);
+    }
+
     // PUT
     public Student updateStudent(Long id, Student student) {
-        Student existing = repository.findById(id).orElseThrow();
-        existing.setName(student.getName());
-        existing.setEmail(student.getEmail());
-        return repository.save(existing);
+        Student existing = repository.findById(id).orElse(null);
+        if (existing != null) {
+            existing.setName(student.getName());
+            existing.setEmail(student.getEmail());
+            return repository.save(existing);
+        }
+        return null;
     }
 
     // DELETE
