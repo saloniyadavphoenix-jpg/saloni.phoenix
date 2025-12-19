@@ -23,12 +23,13 @@ public class PostService {
         return repository.findAll();
     }
 
+    // ✅ FIXED METHOD
     public Post updatePost(Long id, Post post) {
         Post existing = repository.findById(id).orElse(null);
         if (existing != null) {
             existing.setTitle(post.getTitle());
             existing.setContent(post.getContent());
-            existing.setUserId(post.getUserId());
+            existing.setUser(post.getUser()); // 🔥 CHANGE HERE
             return repository.save(existing);
         }
         return null;

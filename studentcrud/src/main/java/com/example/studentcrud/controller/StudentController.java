@@ -17,20 +17,17 @@ public class StudentController {
     public StudentController(StudentService service) {
         this.service = service;
     }
-
     // POST
     @PostMapping
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
         Student saved = service.saveStudent(student);
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
     }
-
     // GET
     @GetMapping
     public ResponseEntity<List<Student>> getStudents() {
         return ResponseEntity.ok(service.getAllStudents());
     }
-
     // PUT
     @PutMapping("/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable Long id,
@@ -38,7 +35,6 @@ public class StudentController {
         Student updated = service.updateStudent(id, student);
         return ResponseEntity.ok(updated);
     }
-
     // DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
