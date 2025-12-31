@@ -35,8 +35,7 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService() {
 
         UserDetails user =
-                User.withUsername("user")
-                        .password("user123")
+                User.withUsername("user").password("user123")
                         .roles("USER")
                         .build();
 
