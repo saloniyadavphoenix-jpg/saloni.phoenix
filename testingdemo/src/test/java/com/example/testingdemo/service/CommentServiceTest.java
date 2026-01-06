@@ -47,7 +47,6 @@ class CommentServiceTest {
     @Test
     void getCommentNotFound() {
         when(repository.findById(1L)).thenReturn(Optional.empty());
-
         assertThrows(RuntimeException.class,
                 () -> service.getById(1L));
     }
